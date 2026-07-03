@@ -1,0 +1,14 @@
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.env
+cloud-functions/_lib/runtime-env.js
+local-store.json
+.DS_Store
+dist/
+.edgeone/
+*.log
+test-assets/e2e-*.json
+test-assets/reports/
+.edgeone/*
+.tef_dist/*

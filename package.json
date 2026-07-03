@@ -1,0 +1,20 @@
+{
+  "name": "medscan",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/start-dev.js",
+    "dev:api": "node --env-file=.env scripts/dev-server.js",
+    "dev:web": "npm run dev --prefix frontend -- --host 127.0.0.1 --port 5173",
+    "dev:makers": "edgeone makers dev",
+    "build": "node scripts/inject-runtime-env.js && npm run build --prefix frontend",
+    "smoke": "node --env-file=.env scripts/smoke.js",
+    "deploy": "node scripts/inject-runtime-env.js && edgeone makers deploy -n medscan",
+    "postinstall": "npm install --prefix frontend"
+  },
+  "dependencies": {
+    "@edgeone/pages-blob": "^0.0.14",
+    "openai": "^4.104.0"
+  }
+}

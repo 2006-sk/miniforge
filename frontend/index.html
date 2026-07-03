@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedScan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body,
+      #root {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: #121416;
+        color: #fff;
+        font-family: Inter, system-ui, sans-serif;
+      }
+      #boot-status {
+        padding: 24px;
+        font-size: 14px;
+        color: #8b919a;
+      }
+      #boot-error {
+        display: none;
+        margin: 24px;
+        padding: 16px;
+        border: 1px solid #ff6b6b;
+        border-radius: 12px;
+        background: #2a1515;
+        color: #ffb4b4;
+        white-space: pre-wrap;
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <p id="boot-status">Starting MedScan…</p>
+    </div>
+    <pre id="boot-error"></pre>
+    <script>
+      window.addEventListener('error', function (e) {
+        var el = document.getElementById('boot-error');
+        if (!el) return;
+        el.style.display = 'block';
+        el.textContent =
+          'Boot error: ' +
+          (e.message || 'unknown') +
+          (e.filename ? '\n' + e.filename + ':' + e.lineno : '');
+      });
+      window.addEventListener('unhandledrejection', function (e) {
+        var el = document.getElementById('boot-error');
+        if (!el) return;
+        el.style.display = 'block';
+        el.textContent =
+          'Boot rejection: ' +
+          (e.reason && e.reason.message ? e.reason.message : String(e.reason));
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

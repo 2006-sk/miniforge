@@ -1,0 +1,13 @@
+{
+  "name": "medscan",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install && npm install --prefix frontend",
+  "outputDirectory": "frontend/dist",
+  "nodeVersion": "20.18.0",
+  "cloudFunctions": {
+    "nodejs": {
+      "maxDuration": 120,
+      "externalNodeModules": ["openai", "@edgeone/pages-blob"]
+    }
+  }
+}
